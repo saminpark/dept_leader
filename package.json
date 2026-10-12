@@ -1,0 +1,8 @@
+{
+  "name": "frand-director-desk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Editable director task dashboard with Google Docs tab snapshots",
+  "scripts": {"test": "node --test tests/core.test.cjs"},
+  "engines": {"node": ">=18"}
+}
