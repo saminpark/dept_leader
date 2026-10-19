@@ -50,6 +50,31 @@ main{padding:1rem}.notice{background:#fff7ed;border:1px solid #fed7aa;color:#7c2
 .gap-note{margin-top:.65rem;background:#fffbeb;border:1px solid #fde68a;color:#854d0e;border-radius:.65rem;padding:.55rem .65rem;font-size:.68rem;line-height:1.5}
 @media(max-width:900px){.team-legend{grid-template-columns:1fr}.ov-head h2{font-size:1.15rem}}
 
+
+/* ===== JOURNEY RESOURCE LINKS ===== */
+.jout li{cursor:pointer;border-radius:.32rem;padding:.08rem .22rem .08rem .08rem;transition:.12s;position:relative}
+.jout li:hover{background:#eef6ff;color:#0f315d}
+.jout li.has-resource{color:#0f315d;font-weight:800}
+.jout li .linkmark{display:inline-flex;align-items:center;justify-content:center;margin-left:.28rem;padding:.02rem .22rem;border-radius:999px;background:#dbeafe;color:#1d4ed8;font-size:.52rem;font-weight:900;vertical-align:.05rem}
+.linkmodal{position:fixed;inset:0;z-index:20000;background:rgba(15,23,42,.48);display:flex;align-items:center;justify-content:center;padding:1rem}
+.linkmodal.hidden{display:none}
+.linkbox{width:min(35rem,96vw);background:#fff;border:1px solid #cbd5e1;border-radius:.9rem;box-shadow:0 24px 70px rgba(15,23,42,.28);overflow:hidden}
+.linkbox-h{padding:.85rem 1rem;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;gap:.7rem;align-items:flex-start}
+.linkbox-h h3{margin:0;font-size:1rem}
+.linkbox-h p{margin:.2rem 0 0;color:#64748b;font-size:.68rem;line-height:1.45}
+.linkclose{border:0;background:#f1f5f9;width:1.8rem;height:1.8rem;border-radius:.5rem;cursor:pointer;font-weight:900;color:#475569}
+.linkbody{padding:.9rem 1rem}
+.linklabel{display:block;font-size:.7rem;font-weight:800;margin-bottom:.3rem;color:#334155}
+.linkinput{width:100%;border:1px solid #cbd5e1;border-radius:.55rem;padding:.62rem .68rem;font:inherit;font-size:.78rem;outline:none}
+.linkinput:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.10)}
+.linkhint{margin-top:.42rem;color:#64748b;font-size:.65rem;line-height:1.45}
+.linkactions{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:flex-end;padding:.75rem 1rem;border-top:1px solid #e5e7eb;background:#f8fafc}
+.linkactions button{border:1px solid #cbd5e1;background:#fff;border-radius:.5rem;padding:.5rem .65rem;font-size:.72rem;font-weight:800;cursor:pointer}
+.linkactions .save{background:#0f766e;color:#fff;border-color:#0f766e}
+.linkactions .delete{color:#b91c1c}
+.linkactions .openlink{color:#1d4ed8}
+.linkactions button:disabled{opacity:.4;cursor:not-allowed}
+
 @media(max-width:1150px){#board{grid-template-columns:repeat(2,minmax(0,1fr))}.sec.span4,.sec.span2{grid-column:span 2}.sec.span1{grid-column:span 1}.body{grid-template-columns:repeat(2,minmax(0,1fr))}.group.span4,.group.span2{grid-column:span 2}.group.span1{grid-column:span 1}}
 @media(max-width:720px){html{font-size:16px}main{padding:.55rem}#board{grid-template-columns:1fr}.sec.span4,.sec.span2,.sec.span1{grid-column:span 1}.body{grid-template-columns:1fr}.group.span4,.group.span2,.group.span1{grid-column:span 1}.controls,.search{width:100%}.btn{flex:1}.title h1{font-size:1.3rem}.secright{max-width:42%}}
 </style>
@@ -63,7 +88,7 @@ main{padding:1rem}.notice{background:#fff7ed;border:1px solid #fed7aa;color:#7c2
       <h2>신사업실 R&R 전체 구조 · 고객 가치 흐름</h2>
       <p>현재의 기획·개발 중심 조직에서, 영업 → 고객 사용 → 제품 개선 → 다시 영업으로 이어지는 반복 가능한 성장 구조를 만든다.</p>
     </div>
-    <span class="qa-badge">✓ 문구·오탈자 검수 적용</span>
+    <div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end"><span class="qa-badge">✓ 문구·오탈자 검수 적용</span><span class="qa-badge">🔗 산출물 클릭 → 링크 관리</span></div>
   </div>
 
   <div class="ov-strip">고객 반응(VOC) · 사용 데이터 · 계약/매출 결과 → 제품 개선 → 다음 영업과 확장에 다시 반영</div>
@@ -171,6 +196,30 @@ main{padding:1rem}.notice{background:#fff7ed;border:1px solid #fed7aa;color:#7c2
   <div class="gap-note"><b>현재 Gap:</b> 제품을 만드는 역량(기획·개발)은 존재하지만, <b>팔고 → 계약하고 → 사용시키고 → 성과를 증명하고 → 재계약·확장하는 Owner</b>가 아직 조직적으로 분리되어 있지 않다. Revenue / Business Operations는 전담 조직이 생길 때까지 실장이 임시로 공백을 보유한다.</div>
 </section>
 <div class="notice"><b>현재 운영 기준:</b> Revenue Operations / Business Operations는 상세 R&R을 미래 역할에 배분해 두었지만 <b>현재 최종 공백 책임은 실장</b>에게 있습니다. 역할 충원 시 실제 Owner만 확정하면 됩니다. Data Cleansing / Data Operations는 <b>신사업기획팀 하위</b>입니다. Sales와 Customer / Service Operations는 목표 조직 슬롯입니다.</div><div id="board"></div><div class="parking person" data-owner="unassigned"><h3>미배정 / 보류 R&R</h3><div id="parking" class="drop empty" data-owner="unassigned"></div></div><div class="shared"><h3>외부 / 공유 조직 인터페이스</h3><div class="sharedgrid"><div class="shareditem"><strong>Design</strong>PM/Planner가 문제·우선순위·완료기준을 제공하고 외부 디자인 조직이 UX/UI·Design System을 실행.</div><div class="shareditem"><strong>Marketing</strong>내부에서 고객가치·메시지·사례·타깃·성과요건을 정의하고 외부 마케팅 조직이 캠페인·콘텐츠를 실행.</div><div class="shareditem"><strong>Infra / DBA</strong>개발팀이 요구·변경범위·배포요건을 정의하고 운영환경·DB·보안을 협의.</div><div class="shareditem"><strong>Finance / Accounting</strong>Revenue Ops가 계약·가격·매출 원천을 관리하고 회계 조직과 청구·매출인식·대사를 연결.</div><div class="shareditem"><strong>Legal</strong>계약, 데이터 권한, 개인정보·신용정보, 파트너십 관련 법률 검토를 공통 지원.</div></div></div></main>
+
+<div id="journeyLinkModal" class="linkmodal hidden" aria-hidden="true">
+  <div class="linkbox" role="dialog" aria-modal="true" aria-labelledby="journeyLinkTitle">
+    <div class="linkbox-h">
+      <div>
+        <h3 id="journeyLinkTitle">자료 링크 관리</h3>
+        <p id="journeyLinkItem">선택한 산출물</p>
+      </div>
+      <button class="linkclose" id="journeyLinkClose" aria-label="닫기">×</button>
+    </div>
+    <div class="linkbody">
+      <label class="linklabel" for="journeyLinkInput">연결할 URL</label>
+      <input id="journeyLinkInput" class="linkinput" type="url" inputmode="url" placeholder="https://docs.google.com/... 또는 https://..." autocomplete="off">
+      <div class="linkhint">저장하면 현재 링크만 유지됩니다. 수정 시 기존 링크를 덮어쓰며 별도 History는 생성하지 않습니다. 이 브라우저에 저장됩니다.</div>
+    </div>
+    <div class="linkactions">
+      <button id="journeyLinkDelete" class="delete">링크 삭제</button>
+      <button id="journeyLinkOpen" class="openlink">링크 열기 ↗</button>
+      <button id="journeyLinkCancel">취소</button>
+      <button id="journeyLinkSave" class="save">저장</button>
+    </div>
+  </div>
+</div>
+
 <div class="foot">기준일: 2026-10-13. 사용자 제공 R&R 문서, 공경남 충원의뢰서/이력서, 실장 업무실의 마케팅·피칭·고객 개선 사례 영역 및 본 대화에서 합의한 조직설계를 기반으로 한 편집형 초안입니다. 정식 인사발령표가 아니라 R&R 설계·Gap 분석용 작업판입니다.</div><div id="toast" class="toast"></div>
 <script>
 const D={sections:[
@@ -206,6 +255,111 @@ const D={sections:[
 ],unassigned:[]};
 
 const KEY='frand_rr_board_v2', FONT_KEY='frand_rr_font_v2';
+
+const JOURNEY_LINK_KEY='frand_rr_journey_links_v1';
+let journeyLinks=loadJourneyLinks();
+let activeJourneyLinkKey=null;
+
+function loadJourneyLinks(){
+  try{return JSON.parse(localStorage.getItem(JOURNEY_LINK_KEY)||'{}')}catch(e){return {}}
+}
+function saveJourneyLinks(){
+  localStorage.setItem(JOURNEY_LINK_KEY,JSON.stringify(journeyLinks));
+}
+function journeyKeyFor(li){
+  const step=[...document.querySelectorAll('.jstep')].indexOf(li.closest('.jstep'))+1;
+  const item=[...li.closest('.jout').querySelectorAll('li')].indexOf(li)+1;
+  return 'step'+step+'-item'+item;
+}
+function normalizeJourneyUrl(raw){
+  let v=(raw||'').trim();
+  if(!v)return '';
+  if(!/^https?:\/\//i.test(v))v='https://'+v;
+  try{
+    const u=new URL(v);
+    if(!['http:','https:'].includes(u.protocol))throw new Error('protocol');
+    return u.href;
+  }catch(e){return null}
+}
+function applyJourneyLinkState(li){
+  const key=li.dataset.linkKey;
+  const url=journeyLinks[key];
+  li.classList.toggle('has-resource',!!url);
+  li.querySelector('.linkmark')?.remove();
+  if(url){
+    const mark=document.createElement('span');
+    mark.className='linkmark';
+    mark.textContent='LINK';
+    li.appendChild(mark);
+    li.title='클릭: 링크 열기·수정·삭제';
+  }else{
+    li.title='클릭: 자료 링크 등록';
+  }
+}
+function initJourneyLinks(){
+  document.querySelectorAll('.jstep .jout li').forEach(li=>{
+    li.dataset.linkKey=journeyKeyFor(li);
+    applyJourneyLinkState(li);
+    li.onclick=()=>openJourneyLinkEditor(li);
+  });
+}
+function openJourneyLinkEditor(li){
+  activeJourneyLinkKey=li.dataset.linkKey;
+  const modal=document.getElementById('journeyLinkModal');
+  const url=journeyLinks[activeJourneyLinkKey]||'';
+  document.getElementById('journeyLinkItem').textContent=li.childNodes[0]?.textContent?.trim()||li.textContent.trim();
+  document.getElementById('journeyLinkInput').value=url;
+  document.getElementById('journeyLinkDelete').disabled=!url;
+  document.getElementById('journeyLinkOpen').disabled=!url;
+  modal.classList.remove('hidden');
+  modal.setAttribute('aria-hidden','false');
+  setTimeout(()=>document.getElementById('journeyLinkInput').focus(),0);
+}
+function closeJourneyLinkEditor(){
+  const modal=document.getElementById('journeyLinkModal');
+  modal.classList.add('hidden');
+  modal.setAttribute('aria-hidden','true');
+  activeJourneyLinkKey=null;
+}
+function refreshJourneyLinks(){
+  document.querySelectorAll('.jstep .jout li').forEach(applyJourneyLinkState);
+}
+document.getElementById('journeyLinkClose').onclick=closeJourneyLinkEditor;
+document.getElementById('journeyLinkCancel').onclick=closeJourneyLinkEditor;
+document.getElementById('journeyLinkModal').onclick=e=>{if(e.target.id==='journeyLinkModal')closeJourneyLinkEditor()};
+document.getElementById('journeyLinkSave').onclick=()=>{
+  if(!activeJourneyLinkKey)return;
+  const normalized=normalizeJourneyUrl(document.getElementById('journeyLinkInput').value);
+  if(normalized===null){alert('http:// 또는 https:// 형식의 URL을 입력해 주세요.');return}
+  if(!normalized){delete journeyLinks[activeJourneyLinkKey]}
+  else journeyLinks[activeJourneyLinkKey]=normalized;
+  saveJourneyLinks();
+  refreshJourneyLinks();
+  closeJourneyLinkEditor();
+  toast(normalized?'자료 링크를 저장했습니다.':'링크를 삭제했습니다.');
+};
+document.getElementById('journeyLinkDelete').onclick=()=>{
+  if(!activeJourneyLinkKey||!journeyLinks[activeJourneyLinkKey])return;
+  if(!confirm('이 자료의 링크를 삭제할까요?'))return;
+  delete journeyLinks[activeJourneyLinkKey];
+  saveJourneyLinks();
+  refreshJourneyLinks();
+  closeJourneyLinkEditor();
+  toast('자료 링크를 삭제했습니다.');
+};
+document.getElementById('journeyLinkOpen').onclick=()=>{
+  if(!activeJourneyLinkKey)return;
+  const url=journeyLinks[activeJourneyLinkKey];
+  if(url)window.open(url,'_blank','noopener,noreferrer');
+};
+document.getElementById('journeyLinkInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){e.preventDefault();document.getElementById('journeyLinkSave').click()}
+  if(e.key==='Escape')closeJourneyLinkEditor();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&!document.getElementById('journeyLinkModal').classList.contains('hidden'))closeJourneyLinkEditor();
+});
+
 let data=load();
 function clone(x){return JSON.parse(JSON.stringify(x))}
 function uid(){return 'r'+Date.now()+Math.random().toString(36).slice(2,6)}
@@ -233,8 +387,8 @@ function filter(){let q=(document.getElementById('q').value||'').trim().toLowerC
 function applyFont(px){px=Math.max(14,Math.min(22,px||17));document.documentElement.style.setProperty('--rootSize',px+'px');localStorage.setItem(FONT_KEY,String(px))}
 document.getElementById('q').oninput=filter;document.getElementById('openAll').onclick=()=>document.querySelectorAll('.sec').forEach(x=>x.classList.remove('collapsed'));document.getElementById('closeAll').onclick=()=>document.querySelectorAll('.sec').forEach(x=>x.classList.add('collapsed'));document.getElementById('fontDown').onclick=()=>applyFont(Number(localStorage.getItem(FONT_KEY)||17)-1);document.getElementById('fontReset').onclick=()=>applyFont(17);document.getElementById('fontUp').onclick=()=>applyFont(Number(localStorage.getItem(FONT_KEY)||17)+1);
 document.getElementById('reset').onclick=()=>{if(confirm('현재 카드 이동·창 크기 변경을 버리고 초기 배치로 복원할까요?')){localStorage.removeItem(KEY);data=clone(D);norm();save();render();toast('초기 배치로 복원했습니다.')}};
-document.getElementById('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='신사업실_RR_배치_'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
-document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();document.getElementById('importFile').onchange=ev=>{let f=ev.target.files?.[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let obj=JSON.parse(rd.result);if(!obj.sections)throw new Error('invalid');data=obj;norm();save();render();toast('JSON 배치를 불러왔습니다.')}catch(e){alert('R&R 배치 JSON 형식을 확인해주세요.')}};rd.readAsText(f,'utf-8');ev.target.value=''};
+document.getElementById('export').onclick=()=>{let payload={version:3,board:data,journeyLinks:journeyLinks};let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='신사업실_RR_배치_'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();document.getElementById('importFile').onchange=ev=>{let f=ev.target.files?.[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let obj=JSON.parse(rd.result);if(obj.board&&obj.board.sections){data=obj.board;journeyLinks=obj.journeyLinks||{};saveJourneyLinks()}else if(obj.sections){data=obj}else throw new Error('invalid');norm();save();render();initJourneyLinks();toast('JSON 배치를 불러왔습니다.')}catch(e){alert('R&R 배치 JSON 형식을 확인해주세요.')}};rd.readAsText(f,'utf-8');ev.target.value=''};
 
 function validateCopy(){
   const text=document.body.innerText||'';
@@ -250,6 +404,7 @@ function validateCopy(){
 let tm;function toast(t){let e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>e.classList.remove('show'),1800)}
 render();
 validateCopy();
+initJourneyLinks();
 
 </script>
 </body></html>
